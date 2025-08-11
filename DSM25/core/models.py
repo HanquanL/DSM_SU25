@@ -7,12 +7,12 @@ class Customer(models.Model):
     CustLastName = models.CharField(max_length=50)
     CustMiddleInit = models.CharField(max_length=1)
     CustSuffix = models.CharField(max_length=10)
-    CustDOB = models.DateField()
+    CustDOB = models.DateField(null=True, blank=True)
     Gender = models.CharField(max_length=10)
-    CustomerType = models.CharField(max_length=50)
+    CustomerType = models.CharField(max_length=50,null=True, blank=True)
 
 class Patient_lab(models.Model):
-    Patient_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    Patient_id = models.ForeignKey(Customer, on_delete=models.CASCADE, null=True, blank=True)
     Age = models.IntegerField()
     BMI = models.FloatField()
     Systolic_BP = models.FloatField()
@@ -25,7 +25,7 @@ class Patient_lab(models.Model):
     Physical_activity = models.CharField(max_length=50)
 
 class Clinical_note(models.Model):
-    Patient_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    Patient_id = models.ForeignKey(Customer, on_delete=models.CASCADE,  null=True, blank=True)
     Description = models.TextField()
     Medical_specialty = models.CharField(max_length=100)
     Sample_name = models.CharField(max_length=100)
