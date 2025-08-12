@@ -58,6 +58,7 @@ class Risk_Score(models.Model):
     Score = models.FloatField()
     Model_name = models.CharField(max_length=50, default='diabetes_risk')
     Model_version = models.CharField(max_length=20, default='v1.0')
+    Band = models.CharField(max_length=20, null=True, blank=True)
     Score_date = models.DateTimeField(default=timezone.now)
     class Meta:
         indexes = [
@@ -76,7 +77,7 @@ class DiabetesOutcome(models.Model):
             models.Index(fields=["Patient_id", "-Created_at"]),
             models.Index(fields=["Index_date"]),
         ]
-        # If you want to prevent duplicates per (patient, date, horizon), uncomment:
+        # To prevent duplicates per (patient, date, horizon), uncomment:
         constraints = [
             models.UniqueConstraint(
                 fields=["Patient_id", "Index_date", "Horizon_days"],

@@ -17,3 +17,9 @@ by Liu, Lee
 python manage.py runserver
 python manage.py import_data --populate
 ```
+
+## python labs:
+
+- scikit-learn
+- joblib
+- numpy
