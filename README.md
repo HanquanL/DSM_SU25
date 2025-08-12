@@ -1,6 +1,19 @@
-Project P4
+# Project P4
+
 by Liu, Lee
 
--Server address: http://127.0.0.1:8000/
--username: admin
--password: admin1234
+## Server Address
+
+**URL:** [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+
+## Admin Credentials
+
+- **Username:** `admin`
+- **Password:** `admin1234`
+
+## Commands to Run
+
+```bash
+python manage.py runserver
+python manage.py import_data --populate
+```
