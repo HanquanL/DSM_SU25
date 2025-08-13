@@ -5,6 +5,3 @@ class CoreConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'core'
 
-    def ready(self):
-        # Import signals to register receivers
-        from . import signals  # noqa: F401
