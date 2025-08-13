@@ -71,4 +71,5 @@ def risk_queue(request):
         "order": order or "score_desc",
         "page_size": page_size,
     }
+    ctx['page_size_options'] = ['25', '50', '100']
     return render(request, "risk/risk_queue.html", ctx)
