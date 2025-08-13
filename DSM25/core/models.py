@@ -48,3 +48,18 @@ class RiskScore(models.Model):
 
     def __str__(self):
         return f"RiskScore(patient={self.Patient_id_id}, score={self.Score:.3f}, high={self.HighRisk})"
+    
+class NotePrediction(models.Model):
+    Note = models.ForeignKey(Clinical_note, on_delete=models.CASCADE)
+    Predicted_specialty = models.CharField(max_length=50)
+    Confidence = models.FloatField()
+    Predicted_at = models.DateTimeField(default=timezone.now)
+
+    class Meta:
+        indexes = [
+            models.Index(fields=["Note", "-Predicted_at"]),
+            models.Index(fields=["Predicted_specialty", "-Predicted_at"]),
+        ]
+
+    def __str__(self):
+        return f"NotePrediction(note={self.Note_id}, {self.Predicted_specialty}, conf={self.Confidence:.2f})"
