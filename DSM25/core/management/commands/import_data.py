@@ -4,6 +4,7 @@ import os
 import csv
 from core.models import Customer
 from django.utils.dateparse import parse_date
+from django.core.management import call_command
 
 class Command(BaseCommand):
     help = 'Populate the database with data.'
@@ -126,3 +127,7 @@ class Command(BaseCommand):
                 )
                 notes_count += 1
             print(f"Database population completed. {notes_count} clinical notes added. All done.")
+
+# Kick off ML scoring right after populate
+print("Starting diabetes risk scoring...")
+call_command("score_diabetes", fraction=0.05)
