@@ -128,15 +128,16 @@ class Command(BaseCommand):
                 notes_count += 1
             print(f"Database population completed. {notes_count} clinical notes added. All done.")
 
-# Kick off ML scoring right after populate
-try:
-    print("Scoring structured diabetes risk…")
-    call_command("score_diabetes", fraction=0.05)  # already in your file
+        # Kick off ML scoring right after populate
+        try:
+            print("Scoring structured diabetes risk…")
+            call_command("score_diabetes", fraction=0.05)
 
-    print("Classifying notes by specialty…")
-    # Train TF-IDF+LogReg if you have enough labeled notes; else keyword fallback
-    call_command("score_notes", min_labels=50)
-    print("Note classification done.")
-except Exception as e:
-    # Don’t let a scoring hiccup kill your import
-    print(f"[WARN] Post-import scoring failed: {e}")
+            print("Classifying notes by specialty…")
+            # Train TF-IDF+LogReg if you have enough labeled notes; else keyword fallback
+            call_command("note_classifier", min_labels=50)
+            print("Note classification done.")
+        except Exception as e:
+            print(f"ML scoring/classification failed: {e}")
+            # Don’t let a scoring hiccup kill your import
+            print(f"[WARN] Post-import scoring failed: {e}")

@@ -55,4 +55,6 @@ def triage_queue(request):
         "search": search or "",
         "page_size": page_size,
     }
+    ctx["specialty_options"] = ["ENDO", "CARD", "PCP", "OTHER"]
+    ctx["page_size_options"] = ['25', '50', '100']
     return render(request, "note/triage_queue.html", ctx)
