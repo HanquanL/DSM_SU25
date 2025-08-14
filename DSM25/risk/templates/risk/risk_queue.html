@@ -57,6 +57,7 @@
         <thead>
           <tr>
             <th>Patient</th>
+            <th>Patient ID</th>
             <th>Gender</th>
             <th>Score</th>
             <th>High?</th>
@@ -67,6 +68,7 @@
           {% for r in page_obj %}
             <tr>
               <td>{{ r.Patient_id.CustFirstName }} {{ r.Patient_id.CustLastName }}</td>
+              <td>{{ r.Patient_id.Cust_id}}</td>
               <td class="muted">{{ r.Patient_id.Gender }}</td>
               <td>{{ r.Score|floatformat:3 }}</td>
               <td>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Management Page</title>
+    <style>
+      body {
+        background: #f5f7fa;
+        font-family: "Segoe UI", Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 500px;
+        margin: 60px auto;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+        padding: 36px 28px;
+        text-align: center;
+      }
+      h1 {
+        color: #2d3a4b;
+        margin-bottom: 24px;
+      }
+      .section-label {
+        font-weight: bold;
+        color: #4f8cff;
+        margin: 24px 0 12px 0;
+        font-size: 1.1em;
+        letter-spacing: 1px;
+      }
+      .button-group,
+      .outcome-group {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        margin-bottom: 12px;
+      }
+      .button-group form,
+      .button-group a,
+      .outcome-group a {
+        display: block;
+      }
+      .btn {
+        border: none;
+        border-radius: 6px;
+        padding: 12px 0;
+        width: 100%;
+        font-size: 1em;
+        cursor: pointer;
+        transition: background 0.2s;
+        margin-bottom: 0;
+        text-decoration: none;
+        display: inline-block;
+        color: #fff;
+      }
+      .btn-green {
+        background: #22c55e;
+      }
+      .btn-green:hover {
+        background: #16a34a;
+      }
+      .btn-blue {
+        background: #4f8cff;
+      }
+      .btn-blue:hover {
+        background: #2563eb;
+      }
+      .btn-red {
+        background: #ef4444;
+      }
+      .btn-red:hover {
+        background: #b91c1c;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Management Dashboard</h1>
+      <div class="section-label">Operation Buttons</div>
+      <div class="button-group">
+        <a href="/admin/" class="btn btn-green">Visit Administration</a>
+        <form method="post" action="{% url 'import_data' %}">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-blue">Run import_data</button>
+        </form>
+        <form method="post" action="{% url 'score_diabetes' %}">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-blue">Run score_diabetes</button>
+        </form>
+        <form method="post" action="{% url 'note_classifier' %}">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-blue">
+            Run note_classifier
+          </button>
+        </form>
+      </div>
+      <div class="section-label" style="color: #ef4444">Outcome Pages</div>
+      <div class="outcome-group">
+        <a href="/diabetes_risk/" class="btn btn-red"
+          >Visit Diabetes Risk Page</a
+        >
+        <a href="/triage-queue/" class="btn btn-red">Visit Triage Queue Page</a>
+      </div>
+    </div>
+  </body>
+</html>
