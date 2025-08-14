@@ -6,7 +6,7 @@ by Liu, Lee
 
 **Home Page URL:** [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 **Diabetes Risk URL:** [http://127.0.0.1:8000/diabetes_risk/](http://127.0.0.1:8000/diabetes_risk/)
-**Clinical Note Classify URL:** [http://127.0.0.1:8000/triage-queue/]http://127.0.0.1:8000/triage-queue/)
+**Clinical Note Classify URL:** [http://127.0.0.1:8000/triage-queue/](http://127.0.0.1:8000/triage-queue/)
 
 ## Admin Credentials
 
